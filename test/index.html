@@ -31,18 +31,11 @@
       `;
 
     } else if (isIOS) {
-
-      content.innerHTML = `
-        <h1>ETF CHECK</h1>
-        <p>iOS 환경입니다.</p>
-      `;
+      window.location.href = "https://apps.apple.com/us/app/etf-check/id1548228110";
 
     } else {
 
-      content.innerHTML = `
-        <h1>ETF CHECK</h1>
-        <p>모바일에서 접속해주세요.</p>
-      `;
+      window.location.href = "www.koreaetf.com";
     }
 
     function openPlayStore() {
