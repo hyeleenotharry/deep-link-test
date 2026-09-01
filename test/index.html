@@ -70,7 +70,12 @@
         "scheme=https;" +
         "action=android.intent.action.VIEW;" +
         "category=android.intent.category.BROWSABLE;" +
-        "end";
+        "package=com.example.webview;" +
+        "S.browser_fallback_url=" +
+        encodeURIComponent(
+          "https://play.google.com/store/apps/details?id=com.koscom.etpportal"
+        ) +
+        ";end";
     }
 
     function open_app_or_store() {
