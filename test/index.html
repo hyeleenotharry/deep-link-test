@@ -4,12 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+  #custom-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-hidden {
+  display: none !important;
+}
+
+.alert-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-buttons {
+  margin-top: 20px;
+}
+
+.alert-buttons button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+</style>
 
 <body>
 
   <div id="content">
     <img src="KOREA ETF 랜딩 스플래시 화면_20260828.svg"/>
   </div>
+  <div id="custom-alert" class="alert-hidden">
+  <div class="alert-content">
+    <p>앱을 여시겠습니까?</p>
+    <div class="alert-buttons">
+      <button id="btn-app">앱 열기</button>
+      <button id="btn-web">웹으로 보기</button>
+    </div>
+  </div>
+</div>
 
   <script>
     const userAgent = navigator.userAgent;
@@ -19,29 +63,52 @@
 
     const content = document.getElementById("content");
 
-    if (isAndroid) {
-      openPlayStore();
-
-    } else if (isIOS) {
-      window.location.href = "https://apps.apple.com/kr/app/etf-check/id1548228110";
-
-    } else {
-
-      window.location.href = "https://www.koreaetf.com/";
-    }
-
-    function openPlayStore() {
+    function openApp() {
       window.location.href =
-        "intent://details?id=com.koscom.etpportal" +
+        "intent://hyeleenotharry.github.io/deep-link-test/test" +
         "#Intent;" +
-        "scheme=market;" +
-        "package=com.android.vending;" +
-        "S.browser_fallback_url=" +
-        encodeURIComponent(
-          "https://play.google.com/store/apps/details?id=com.koscom.etpportal"
-        ) +
-        ";end";
+        "scheme=https;" +
+        "action=android.intent.action.VIEW;" +
+        "category=android.intent.category.BROWSABLE;" +
+        "end";
     }
+
+    function open_app_or_store() {
+      if (isAndroid) {
+        openApp();
+      } else if (isIOS) {
+        
+        window.location.href = "https://apps.apple.com/kr/app/etf-check/id1548228110";
+  
+      } else {
+  
+        window.location.href = "https://www.koreaetf.com/";
+      }
+
+    }
+
+    const alertBox = document.getElementById('custom-alert');
+    const btnWeb = document.getElementById('btn-web');
+    const btnApp = document.getElementById('btn-app');
+    
+    // 알림창 열기 함수
+    function showAlert() {
+      alertBox.classList.remove('alert-hidden');
+    }
+    
+    // 웹으로 보기 버튼 클릭 시 닫기
+    btnWeb.addEventListener('click', () => {
+      alertBox.classList.add('alert-hidden');
+      window.location.href = "https://www.koreaetf.com/mobile/main"
+    });
+
+    btnApp.addEventListener('click', () => {
+      open_app_or_store();
+    });
+    
+    // 페이지 로드 시 실행 테스트
+    showAlert();
+    
   </script>
 
 </body>
