@@ -3,33 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div id="content">
+    페이지를 확인하고 있습니다.
+  </div>
 
   <script>
     const userAgent = navigator.userAgent;
 
     const isAndroid = /Android/i.test(userAgent);
     const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-    if (isAndroid) {
-      window.location.href =
-      "intent://details?id=com.koscom.etpportal" +
-      "#Intent;" +
-      "scheme=market;" +
-      "package=com.android.vending;" +
-      "S.browser_fallback_url=" +
-      encodeURIComponent(
-        "https://play.google.com/store/apps/details?id=com.koscom.etpportal"
-      ) +
-      ";end";
-    } else if (isIOS) {
-      console.log("this is ios");
-    } else {
-      window.location.href = "https://play.google.com/store/search?q=etf%20check&c=apps&hl=ko";
-    }
-    
-  </script>
-</head>
 
-<body>
-  <h1>ETF CHECK 설치 페이지로 이동합니다.</h1>
+    const content = document.getElementById("content");
+
+    if (isAndroid) {
+
+      content.innerHTML = `
+        <h1>ETF CHECK 앱 설치</h1>
+        <p>ETF CHECK 앱을 설치해주세요.</p>
+
+        <button onclick="openPlayStore()">
+          Google Play에서 설치
+        </button>
+      `;
+
+    } else if (isIOS) {
+
+      content.innerHTML = `
+        <h1>ETF CHECK</h1>
+        <p>iOS 환경입니다.</p>
+      `;
+
+    } else {
+
+      content.innerHTML = `
+        <h1>ETF CHECK</h1>
+        <p>모바일에서 접속해주세요.</p>
+      `;
+    }
+
+    function openPlayStore() {
+      window.location.href =
+        "intent://details?id=com.koscom.etpportal" +
+        "#Intent;" +
+        "scheme=market;" +
+        "package=com.android.vending;" +
+        "S.browser_fallback_url=" +
+        encodeURIComponent(
+          "https://play.google.com/store/apps/details?id=com.koscom.etpportal"
+        ) +
+        ";end";
+    }
+  </script>
+
 </body>
 </html>
