@@ -20,15 +20,7 @@
     const content = document.getElementById("content");
 
     if (isAndroid) {
-
-      content.innerHTML = `
-        <h1>ETF CHECK 앱 설치</h1>
-        <p>ETF CHECK 앱을 설치해주세요.</p>
-
-        <button onclick="openPlayStore()">
-          Google Play에서 설치
-        </button>
-      `;
+      openPlayStore();
 
     } else if (isIOS) {
       window.location.href = "https://apps.apple.com/kr/app/etf-check/id1548228110";
