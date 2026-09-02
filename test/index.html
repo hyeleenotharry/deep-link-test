@@ -63,20 +63,18 @@
 
     const content = document.getElementById("content");
 
-    function openApp() {
-      window.location.href =
-        "intent://hyeleenotharry.github.io/deep-link-test/test" +
-        "#Intent;" +
-        "scheme=https;" +
-        "action=android.intent.action.VIEW;" +
-        "category=android.intent.category.BROWSABLE;" +
-        "package=kr.co.koscom.koreaetf.km_koreaetf_test;" +
-        "S.browser_fallback_url=" +
-        encodeURIComponent(
-          "https://play.google.com/apps/internaltest/4701525029199711949"
-        ) +
-        ";end";
-    }
+    window.location.href =
+      "intent://hyeleenotharry.github.io/deep-link-test/test" +
+      "#Intent;" +
+      "scheme=https;" +
+      "action=android.intent.action.VIEW;" +
+      "category=android.intent.category.BROWSABLE;" +
+      "package=kr.co.koscom.koreaetf.km_koreaetf_test;" +
+      "S.browser_fallback_url=" +
+      encodeURIComponent(
+        "https://play.google.com/apps/internaltest/4701525029199711949"
+      ) +
+      ";end";
 
     function open_app_or_store() {
       if (isAndroid) {
