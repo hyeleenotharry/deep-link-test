@@ -45,14 +45,6 @@
   <div id="content">
     <img src="KOREA ETF 랜딩 스플래시 화면_20260828.svg"/>
   </div>
-  <div id="custom-alert" class="alert-hidden">
-  <div class="alert-content">
-    <p>앱을 여시겠습니까?</p>
-    <div class="alert-buttons">
-      <button id="btn-app">앱 열기</button>
-      <button id="btn-web">웹으로 보기</button>
-    </div>
-  </div>
 </div>
 
   <script>
@@ -87,28 +79,7 @@
       }
 
     }
-
-    const alertBox = document.getElementById('custom-alert');
-    const btnWeb = document.getElementById('btn-web');
-    const btnApp = document.getElementById('btn-app');
-    
-    // 알림창 열기 함수
-    function showAlert() {
-      alertBox.classList.remove('alert-hidden');
-    }
-    
-    // 웹으로 보기 버튼 클릭 시 닫기
-    btnWeb.addEventListener('click', () => {
-      alertBox.classList.add('alert-hidden');
-      window.location.href = "https://www.koreaetf.com/mobile/main"
-    });
-
-    btnApp.addEventListener('click', () => {
-      open_app_or_store();
-    });
-    
-    // 페이지 로드 시 실행 테스트
-    showAlert();
+    open_app_or_store();
     
   </script>
 
